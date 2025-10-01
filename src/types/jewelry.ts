@@ -1,0 +1,37 @@
+export interface JewelryItem {
+  id: string;
+  nivodaStockId: string;
+  uniqueSKU: string;
+  supplierCode: string;
+  name: string;
+  description: string;
+  type: string;
+  published: boolean;
+  naturalVariantPrice: number;
+  labgrownVariantPrice: number;
+  metalWeight: number;
+  bandWidth: number;
+  numberOfSideStones: number;
+  totalCttw: number;
+  ringStyle: string[];
+  ringType: string;
+  mountStyle: string;
+  headType: string;
+  bandShape: string;
+  settingType: string;
+  finish: string;
+  bandStyle: string;
+  option1Name: string;
+  option1Value: string;
+  option2Name: string;
+  option2Value: string;
+  naturalColour: string;
+  naturalClarity: string;
+  labgrownColour: string;
+  labgrownClarity: string;
+  images: string[];
+  thumbnails: string[];
+  video360Url: string;
+  createdAt: string;
+  updatedAt: string;
+}
