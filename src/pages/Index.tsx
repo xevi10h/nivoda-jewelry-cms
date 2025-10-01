@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Upload } from "lucide-react";
 import { InventoryFilters } from "@/components/inventory/InventoryFilters";
 import { InventoryTable } from "@/components/inventory/InventoryTable";
 import { JewelryForm } from "@/components/inventory/JewelryForm";
+import { CSVImportDialog } from "@/components/inventory/CSVImportDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { JewelryItem } from "@/types/jewelry";
@@ -95,6 +96,7 @@ const Index = () => {
   const [ringTypeFilter, setRingTypeFilter] = useState("all");
   const [publishedFilter, setPublishedFilter] = useState("all");
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isCSVImportOpen, setIsCSVImportOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<JewelryItem | undefined>();
   const [deleteItem, setDeleteItem] = useState<JewelryItem | undefined>();
 
@@ -172,6 +174,10 @@ const Index = () => {
     setEditingItem(undefined);
   };
 
+  const handleCSVImport = (importedItems: JewelryItem[]) => {
+    setItems([...items, ...importedItems]);
+  };
+
   return (
     <Layout>
       <div className="p-8">
@@ -182,16 +188,25 @@ const Index = () => {
               Manage your jewelry collection and variants
             </p>
           </div>
-          <Button
-            onClick={() => {
-              setEditingItem(undefined);
-              setIsFormOpen(true);
-            }}
-            className="bg-primary hover:bg-primary/90 shadow-elegant"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add New Item
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setIsCSVImportOpen(true)}
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              Import CSV
+            </Button>
+            <Button
+              onClick={() => {
+                setEditingItem(undefined);
+                setIsFormOpen(true);
+              }}
+              className="bg-primary hover:bg-primary/90 shadow-elegant"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add New Item
+            </Button>
+          </div>
         </div>
 
         <div className="space-y-6">
@@ -235,6 +250,12 @@ const Index = () => {
           />
         </DialogContent>
       </Dialog>
+
+      <CSVImportDialog
+        open={isCSVImportOpen}
+        onOpenChange={setIsCSVImportOpen}
+        onImport={handleCSVImport}
+      />
 
       <AlertDialog open={!!deleteItem} onOpenChange={() => setDeleteItem(undefined)}>
         <AlertDialogContent>
