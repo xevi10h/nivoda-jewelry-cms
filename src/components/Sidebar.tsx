@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Package, LogOut, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button } from '@/components/ui/button';
+import { useSidebar } from '@/contexts/SidebarContext';
 import { Separator } from '@/components/ui/separator';
 
 const navigation = [{ name: 'Inventory', href: '/', icon: Package }];
@@ -12,7 +11,7 @@ export const Sidebar = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { session, logout } = useAuth();
-	const [isExpanded, setIsExpanded] = useState(false);
+	const { isExpanded, setIsExpanded } = useSidebar();
 
 	const handleLogout = () => {
 		logout();
@@ -23,14 +22,22 @@ export const Sidebar = () => {
 		navigate('/profile');
 	};
 
+	const handleMouseEnter = () => {
+		setIsExpanded(true);
+	};
+
+	const handleMouseLeave = () => {
+		setIsExpanded(false);
+	};
+
 	return (
 		<aside
 			className={cn(
-				'fixed left-0 top-0 h-screen bg-sidebar border-r border-sidebar-border flex flex-col transition-all duration-300 ease-in-out z-50',
+				'fixed left-0 top-0 h-screen bg-sidebar border-r border-sidebar-border flex flex-col transition-all duration-300 ease-in-out',
 				isExpanded ? 'w-64' : 'w-20',
 			)}
-			onMouseEnter={() => setIsExpanded(true)}
-			onMouseLeave={() => setIsExpanded(false)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 		>
 			{/* Header */}
 			<div className="p-6 border-b border-sidebar-border">
