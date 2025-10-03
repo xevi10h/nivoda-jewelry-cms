@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Gem, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 
 export default function Login() {
@@ -66,17 +66,19 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+      <Card className="w-full max-w-md shadow-elegant border-gray-200">
+        <CardHeader className="space-y-6 pb-8">
           <div className="flex justify-center">
-            <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
-              <Gem className="w-10 h-10 text-primary-foreground" />
-            </div>
+            <img
+              src="/logo-complete.svg"
+              alt="Nivoda"
+              className="h-8"
+            />
           </div>
           <div className="text-center space-y-2">
-            <CardTitle className="text-2xl font-bold">Nivoda Jewelry CMS</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-xl font-semibold text-foreground">Jewelry CMS</CardTitle>
+            <CardDescription className="text-sm">
               {needs2FA ? 'Enter your 2FA code' : 'Sign in to your manufacturer account'}
             </CardDescription>
           </div>
