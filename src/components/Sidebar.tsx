@@ -27,7 +27,7 @@ export const Sidebar = () => {
 		<aside
 			className={cn(
 				'fixed left-0 top-0 h-screen bg-sidebar border-r border-sidebar-border flex flex-col transition-all duration-300 ease-in-out z-50',
-				isExpanded ? 'w-64' : 'w-20'
+				isExpanded ? 'w-64' : 'w-20',
 			)}
 			onMouseEnter={() => setIsExpanded(true)}
 			onMouseLeave={() => setIsExpanded(false)}
@@ -39,13 +39,13 @@ export const Sidebar = () => {
 						<img
 							src="/logo-isotope.png"
 							alt="Nivoda"
-							className="w-10 h-6 brightness-0 invert"
+							className="w-10 brightness-0 invert"
 						/>
 					</div>
 					<div
 						className={cn(
 							'transition-all duration-300 overflow-hidden',
-							isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0'
+							isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0',
 						)}
 					>
 						<h1 className="text-base font-semibold text-sidebar-foreground whitespace-nowrap">
@@ -71,14 +71,14 @@ export const Sidebar = () => {
 								isActive
 									? 'bg-white text-black font-medium'
 									: 'text-sidebar-foreground hover:bg-sidebar-accent',
-								!isExpanded && 'justify-center'
+								!isExpanded && 'justify-center',
 							)}
 						>
 							<item.icon className="w-4 h-4 flex-shrink-0" />
 							<span
 								className={cn(
 									'transition-all duration-300 overflow-hidden whitespace-nowrap',
-									isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0'
+									isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0',
 								)}
 							>
 								{item.name}
@@ -96,7 +96,7 @@ export const Sidebar = () => {
 							onClick={handleProfileClick}
 							className={cn(
 								'w-full px-3 py-3 rounded-lg bg-sidebar-accent hover:bg-sidebar-accent/80 transition-all duration-300 cursor-pointer',
-								!isExpanded && 'px-0 flex justify-center'
+								!isExpanded && 'px-0 flex justify-center',
 							)}
 						>
 							<div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ export const Sidebar = () => {
 								<div
 									className={cn(
 										'flex-1 min-w-0 text-left transition-all duration-300 overflow-hidden',
-										isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0'
+										isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0',
 									)}
 								>
 									<p className="text-sm font-medium text-sidebar-foreground truncate">
@@ -125,7 +125,7 @@ export const Sidebar = () => {
 					variant="ghost"
 					className={cn(
 						'w-full text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300',
-						isExpanded ? 'justify-start' : 'justify-center px-2'
+						isExpanded ? 'justify-start' : 'justify-center px-2',
 					)}
 					onClick={handleLogout}
 				>
@@ -133,7 +133,7 @@ export const Sidebar = () => {
 					<span
 						className={cn(
 							'text-sm transition-all duration-300 overflow-hidden whitespace-nowrap',
-							isExpanded ? 'opacity-100 w-auto ml-3' : 'opacity-0 w-0 ml-0'
+							isExpanded ? 'opacity-100 w-auto ml-3' : 'opacity-0 w-0 ml-0',
 						)}
 					>
 						Logout
