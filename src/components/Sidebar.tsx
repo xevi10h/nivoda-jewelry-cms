@@ -1,14 +1,11 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Package, Settings, LogOut, User } from 'lucide-react';
+import { Package, LogOut, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 
-const navigation = [
-	{ name: 'Inventory', href: '/', icon: Package },
-	{ name: 'Settings', href: '/settings', icon: Settings },
-];
+const navigation = [{ name: 'Inventory', href: '/', icon: Package }];
 
 export const Sidebar = () => {
 	const location = useLocation();

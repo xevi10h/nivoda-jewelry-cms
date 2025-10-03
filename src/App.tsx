@@ -7,7 +7,6 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import Login from './pages/Login';
 import IndexNew from './pages/IndexNew';
-import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
@@ -26,14 +25,6 @@ const App = () => (
 							element={
 								<ProtectedRoute>
 									<IndexNew />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/settings"
-							element={
-								<ProtectedRoute>
-									<Settings />
 								</ProtectedRoute>
 							}
 						/>

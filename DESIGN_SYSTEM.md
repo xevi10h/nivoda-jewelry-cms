@@ -149,7 +149,6 @@ lg: var(--radius) = 8px
 ├─────────────────────────┤
 │ Navigation Items        │
 │   - Inventory           │
-│   - Settings            │
 │                         │
 │                         │
 ├─────────────────────────┤
