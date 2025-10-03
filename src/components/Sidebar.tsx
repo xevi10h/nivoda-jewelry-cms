@@ -34,7 +34,7 @@ export const Sidebar = () => {
 		>
 			{/* Header */}
 			<div className="p-6 border-b border-sidebar-border">
-				<div className="flex items-center gap-3">
+				<div className="flex items-center gap-4">
 					<div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
 						<img
 							src="/logo-isotope.png"
@@ -67,11 +67,11 @@ export const Sidebar = () => {
 							key={item.name}
 							to={item.href}
 							className={cn(
-								'flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-300 text-sm',
+								'flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 text-sm',
 								isActive
 									? 'bg-white text-black font-medium'
 									: 'text-sidebar-foreground hover:bg-sidebar-accent',
-								!isExpanded && 'justify-center',
+								isExpanded && 'gap-3',
 							)}
 						>
 							<item.icon className="w-4 h-4 flex-shrink-0" />
@@ -95,12 +95,16 @@ export const Sidebar = () => {
 						<button
 							onClick={handleProfileClick}
 							className={cn(
-								'w-full px-3 py-3 rounded-lg bg-sidebar-accent hover:bg-sidebar-accent/80 transition-all duration-300 cursor-pointer',
-								!isExpanded && 'px-0 flex justify-center',
+								'w-full px-3 py-3 rounded-lg hover:bg-sidebar-accent/80 transition-all duration-300 cursor-pointer',
+								isExpanded && 'gap-3',
 							)}
 						>
-							<div className="flex items-center gap-3">
-								<div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+							<div className={cn(`flex items-center`, isExpanded && 'gap-3')}>
+								<div
+									className={cn(
+										`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0`,
+									)}
+								>
 									<User className="w-4 h-4 text-white" />
 								</div>
 								<div
@@ -121,24 +125,33 @@ export const Sidebar = () => {
 						<Separator className="bg-sidebar-border" />
 					</>
 				)}
-				<Button
-					variant="ghost"
+				<button
 					className={cn(
-						'w-full text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300',
-						isExpanded ? 'justify-start' : 'justify-center px-2',
+						'w-full px-3 py-3 rounded-lg hover:bg-sidebar-accent/80 transition-all duration-300 cursor-pointer',
+						isExpanded && 'gap-3',
 					)}
 					onClick={handleLogout}
 				>
-					<LogOut className="w-4 h-4 flex-shrink-0" />
-					<span
-						className={cn(
-							'text-sm transition-all duration-300 overflow-hidden whitespace-nowrap',
-							isExpanded ? 'opacity-100 w-auto ml-3' : 'opacity-0 w-0 ml-0',
-						)}
-					>
-						Logout
-					</span>
-				</Button>
+					<div className={cn(`flex items-center`, isExpanded && 'gap-3')}>
+						<div
+							className={cn(
+								`w-8 h-8 flex items-center justify-center flex-shrink-0`,
+							)}
+						>
+							<LogOut className="w-4 h-4 text-white" />
+						</div>
+						<span
+							className={cn(
+								'flex-1 min-w-0 text-left transition-all duration-300 overflow-hidden',
+								isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0',
+							)}
+						>
+							<p className="text-sm font-medium text-sidebar-foreground truncate">
+								Logout
+							</p>
+						</span>
+					</div>
+				</button>
 			</div>
 		</aside>
 	);
